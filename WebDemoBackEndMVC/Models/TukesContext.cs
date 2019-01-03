@@ -22,7 +22,7 @@ namespace WebDemoBackEndMVC.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=tcp:codebootcamp.database.windows.net,1433;Initial Catalog=Tukes;Persist Security Info=False;User ID=tukesadmin;Password=TamaVastaVa1k3a0n#2019;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                optionsBuilder.UseSqlServer("Server=tcp:codebootcamp2.database.windows.net,1433;Initial Catalog=Tukes;Persist Security Info=False;User ID=tukesadmin;Password=TamaVastaVa1k3a0n#2019;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 
@@ -38,11 +38,12 @@ namespace WebDemoBackEndMVC.Models
 
                 entity.Property(e => e.JulkaisuPvm)
                     .HasColumnName("julkaisu_pvm")
-                    .HasColumnType("datetime");
+                    .HasColumnType("date");
 
                 entity.Property(e => e.Malli)
                     .HasColumnName("malli")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.MuutTiedot)
                     .HasColumnName("muut_tiedot")
@@ -50,11 +51,12 @@ namespace WebDemoBackEndMVC.Models
 
                 entity.Property(e => e.Nimike)
                     .HasColumnName("nimike")
-                    .HasMaxLength(100);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Paatos)
                     .HasColumnName("paatos")
-                    .HasMaxLength(255);
+                    .HasColumnType("text");
 
                 entity.Property(e => e.Puutteet)
                     .HasColumnName("puutteet")
@@ -66,35 +68,43 @@ namespace WebDemoBackEndMVC.Models
 
                 entity.Property(e => e.TapausTulos)
                     .HasColumnName("tapaus_tulos")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Tapausnumero)
                     .HasColumnName("tapausnumero")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.TeknisetArvot)
                     .HasColumnName("tekniset_arvot")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.TuotePaaryhmaNimi)
                     .HasColumnName("tuote_paaryhma_nimi")
-                    .HasMaxLength(100);
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Tuotenimi)
                     .HasColumnName("tuotenimi")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Vaaranlaji)
                     .HasColumnName("vaaranlaji")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Vastuutaho)
                     .HasColumnName("vastuutaho")
-                    .HasMaxLength(255);
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Viivakoodi)
                     .HasColumnName("viivakoodi")
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
             });
         }
     }
