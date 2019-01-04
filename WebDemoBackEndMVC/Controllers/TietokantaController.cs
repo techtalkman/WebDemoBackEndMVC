@@ -42,7 +42,7 @@ namespace WebRekisteri.Controllers
 
         [HttpPut]
         [Route("{key}")]
-        public string PutEdit(string key, [FromBody] Myyntikiellot newData)
+        public string PutEdit(int key, [FromBody] Myyntikiellot newData)
         {
             TukesContext context = new TukesContext();
             Myyntikiellot tuote = context.Myyntikiellot.Find(key);
@@ -65,7 +65,7 @@ namespace WebRekisteri.Controllers
 
         [Route("{key}")]
 
-        public string DeleteSingle(string key)
+        public string DeleteSingle(int key)
 
         {
             TukesContext context = new TukesContext();
