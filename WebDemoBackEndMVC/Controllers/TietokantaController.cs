@@ -21,7 +21,7 @@ namespace WebRekisteri.Controllers
 
 
         [Route("{key}")]
-        public Myyntikiellot GetSingle(string key)
+        public Myyntikiellot GetSingle(int key)
         {
             TukesContext context = new TukesContext();
             Myyntikiellot tuote = context.Myyntikiellot.Find(key);
