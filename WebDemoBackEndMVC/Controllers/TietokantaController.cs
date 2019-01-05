@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebDemoBackEndMVC.Models;
 
-namespace WebRekisteri.Controllers
+namespace WebDemoBackEndMVC.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -70,13 +70,16 @@ namespace WebRekisteri.Controllers
         {
             TukesContext context = new TukesContext();
             Myyntikiellot tuote = context.Myyntikiellot.Find(key);
-
-            if (tuote != null)
+            try
             {
-                context.Myyntikiellot.Remove(tuote);
-                context.SaveChanges();
-                return "DELETED";
+                if (tuote != null)
+                {
+                    context.Myyntikiellot.Remove(tuote);
+                    context.SaveChanges();
+                    return "DELETED";
+                }
             }
+            catch (Exception) { }
 
             return "NOT FOUND";
         }
