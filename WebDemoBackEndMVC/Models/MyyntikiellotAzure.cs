@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WebDemoBackEndMVC.Models
 {
-    public partial class Myyntikiellot
+    public partial class MyyntikiellotAzure
     {
         public int Id { get; set; }
         public DateTime? JulkaisuPvm { get; set; }

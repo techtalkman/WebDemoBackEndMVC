@@ -12,28 +12,28 @@ namespace WebDemoBackEndMVC.Controllers
     [ApiController]
     public class TietokantaController : ControllerBase
     {
-        public List<Myyntikiellot> GetAll()
+        public List<MyyntikiellotAzure> GetAll()
         {
-            TukesContext context = new TukesContext();
-            List<Myyntikiellot> kiellot = context.Myyntikiellot.ToList();
+            TukesAContext context = new TukesAContext();
+            List<MyyntikiellotAzure> kiellot = context.MyyntikiellotAzure.ToList();
             return kiellot;
         }
 
 
         [Route("{key}")]
-        public Myyntikiellot GetSingle(int key)
+        public MyyntikiellotAzure GetSingle(int key)
         {
-            TukesContext context = new TukesContext();
-            Myyntikiellot tuote = context.Myyntikiellot.Find(key);
+            TukesAContext context = new TukesAContext();
+            MyyntikiellotAzure tuote = context.MyyntikiellotAzure.Find(key);
             return tuote;
         }
 
 
         [HttpPost]
-        public string PostCreateNew([FromBody] Myyntikiellot tuote)
+        public string PostCreateNew([FromBody] MyyntikiellotAzure tuote)
         {
-            TukesContext context = new TukesContext();
-            context.Myyntikiellot.Add(tuote);
+            TukesAContext context = new TukesAContext();
+            context.MyyntikiellotAzure.Add(tuote);
             context.SaveChanges();
 
             return tuote.Id.ToString();
@@ -42,10 +42,10 @@ namespace WebDemoBackEndMVC.Controllers
 
         [HttpPut]
         [Route("{key}")]
-        public string PutEdit(int key, [FromBody] Myyntikiellot newData)
+        public string PutEdit(int key, [FromBody] MyyntikiellotAzure newData)
         {
-            TukesContext context = new TukesContext();
-            Myyntikiellot tuote = context.Myyntikiellot.Find(key);
+            TukesAContext context = new TukesAContext();
+            MyyntikiellotAzure tuote = context.MyyntikiellotAzure.Find(key);
 
             if (tuote != null)
             {
@@ -68,13 +68,13 @@ namespace WebDemoBackEndMVC.Controllers
         public string DeleteSingle(int key)
 
         {
-            TukesContext context = new TukesContext();
-            Myyntikiellot tuote = context.Myyntikiellot.Find(key);
+            TukesAContext context = new TukesAContext();
+            MyyntikiellotAzure tuote = context.MyyntikiellotAzure.Find(key);
             try
             {
                 if (tuote != null)
                 {
-                    context.Myyntikiellot.Remove(tuote);
+                    context.MyyntikiellotAzure.Remove(tuote);
                     context.SaveChanges();
                     return "DELETED";
                 }
