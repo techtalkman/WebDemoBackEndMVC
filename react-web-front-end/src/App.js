@@ -15,7 +15,7 @@ class App extends Component {
     // console.log("App-komponentti: componentDidMount-metodissa.");
     // this.setState({ title: "Väliaikainen otsikko"} );
 
-    fetch('http://localhost:62927/api/tietokanta')
+    fetch('https://webrekisteri2018.azurewebsites.net/api/tietokanta')
       .then(response => response.json())
       .then(json => {
         console.log(json);
