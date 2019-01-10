@@ -36,12 +36,18 @@ class App extends Component {
     let viesti = "";
     let taulukko = [];
     if (this.state.tuotteet.length > 0) {
-
+        taulukko.push(<tbody><tr>
+          <td><b>id</b></td>
+          <td><b>vaaranlaji</b></td>
+          <td><b>tuotenimi</b></td>
+          <td><b>vastuutaho</b></td>
+        </tr></tbody>);
       for (let index = 0; index < this.state.tuotteet.length; index++) {
         const element = this.state.tuotteet[index];
         taulukko.push(<tbody><tr>
+          <td>{element.id}</td>
+          <td>{element.vaaranlaji}</td>
           <td>{element.tuotenimi}</td>
-          <td>{element.malli}</td>
           <td>{element.vastuutaho}</td>
         </tr></tbody>);
 
