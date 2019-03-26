@@ -8,6 +8,9 @@ using WebDemoBackEndMVC.Models;
 
 namespace WebDemoBackEndMVC.Controllers
 {
+    /// <summary>
+    /// API-kutsut
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class TietokantaController : ControllerBase
@@ -23,9 +26,17 @@ namespace WebDemoBackEndMVC.Controllers
         [Route("{key}")]
         public MyyntikiellotAzure GetSingle(int key)
         {
-            TukesAContext context = new TukesAContext();
-            MyyntikiellotAzure tuote = context.MyyntikiellotAzure.Find(key);
-            return tuote;
+            try
+            {
+                TukesAContext context = new TukesAContext();
+                MyyntikiellotAzure tuote = context.MyyntikiellotAzure.Find(key);
+                return tuote;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
 
@@ -44,17 +55,25 @@ namespace WebDemoBackEndMVC.Controllers
         [Route("{key}")]
         public string PutEdit(int key, [FromBody] MyyntikiellotAzure newData)
         {
-            TukesAContext context = new TukesAContext();
-            MyyntikiellotAzure tuote = context.MyyntikiellotAzure.Find(key);
 
-            if (tuote != null)
+            try
             {
-                tuote.Tuotenimi = newData.Tuotenimi;
-                tuote.Malli = newData.Malli;
-                tuote.Vaaranlaji = newData.Vaaranlaji;
-                
-                context.SaveChanges();
-                return "OK";
+                TukesAContext context = new TukesAContext();
+                MyyntikiellotAzure tuote = context.MyyntikiellotAzure.Find(key);
+
+                if (tuote != null)
+                {
+                    tuote.Tuotenimi = newData.Tuotenimi;
+                    tuote.Malli = newData.Malli;
+                    tuote.Vaaranlaji = newData.Vaaranlaji;
+
+                    context.SaveChanges();
+                    return "OK";
+                }
+            }
+            catch (Exception e)
+            {
+                throw;
             }
 
             return "NOT FOUND";
@@ -68,10 +87,11 @@ namespace WebDemoBackEndMVC.Controllers
         public string DeleteSingle(int key)
 
         {
-            TukesAContext context = new TukesAContext();
-            MyyntikiellotAzure tuote = context.MyyntikiellotAzure.Find(key);
             try
             {
+                TukesAContext context = new TukesAContext();
+            MyyntikiellotAzure tuote = context.MyyntikiellotAzure.Find(key);
+
                 if (tuote != null)
                 {
                     context.MyyntikiellotAzure.Remove(tuote);
