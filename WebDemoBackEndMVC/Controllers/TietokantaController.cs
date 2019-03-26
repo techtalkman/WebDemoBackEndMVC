@@ -9,7 +9,7 @@ using WebDemoBackEndMVC.Models;
 namespace WebDemoBackEndMVC.Controllers
 {
     /// <summary>
-    /// API-kutsut muutettu
+    /// API-kutsut muutettu toistamiseen
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
